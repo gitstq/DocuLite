@@ -1,0 +1,74 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "doculite"
+version = "1.0.0"
+description = "🚀 DocuLite - Lightweight Intelligent Document Conversion & Content Extraction Engine"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.8"
+authors = [
+    {name = "DocuLite Team", email = "doculite@example.com"}
+]
+keywords = ["document", "pdf", "markdown", "conversion", "extraction", "ocr", "cli", "llm"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Text Processing :: Markup",
+]
+
+dependencies = [
+    "click>=8.0.0",
+    "rich>=13.0.0",
+    "pydantic>=2.0.0",
+    "typing-extensions>=4.0.0",
+]
+
+[project.optional-dependencies]
+pdf = ["pymupdf>=1.23.0"]
+docx = ["python-docx>=1.1.0"]
+xlsx = ["openpyxl>=3.1.0"]
+ocr = ["pillow>=10.0.0", "pytesseract>=0.3.10"]
+audio = ["openai-whisper>=20231117"]
+html = ["beautifulsoup4>=4.12.0", "lxml>=4.9.0"]
+all = [
+    "pymupdf>=1.23.0",
+    "python-docx>=1.1.0",
+    "openpyxl>=3.1.0",
+    "pillow>=10.0.0",
+    "pytesseract>=0.3.10",
+    "openai-whisper>=20231117",
+    "beautifulsoup4>=4.12.0",
+    "lxml>=4.9.0",
+]
+
+[project.scripts]
+doculite = "doculite.cli:main"
+dlite = "doculite.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/gitstq/doculite"
+Documentation = "https://github.com/gitstq/doculite#readme"
+Repository = "https://github.com/gitstq/doculite"
+Issues = "https://github.com/gitstq/doculite/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/doculite"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src",
+    "/tests",
+    "/README.md",
+    "/LICENSE",
+]
